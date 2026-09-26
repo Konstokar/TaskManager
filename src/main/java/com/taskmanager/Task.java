@@ -48,19 +48,21 @@ public class Task {
         if (obj == null){
             return false;
         }
-        else {
-            if (obj instanceof Task){
-                if (obj.getClass() != this.getClass()){
-                    return false;
-                }
-                if (this.getId() == null && ((Task) obj).getId() == null) {
-                    return false;
-                }
-                Task task = (Task) obj;
-                return ((Task) obj).getId().equals(task.getId());
-            } else {
+        if (obj instanceof Task){
+            if (obj.getClass() != this.getClass()){
                 return false;
             }
+            if (this.getId() == null || ((Task) obj).getId() == null) {
+                return false;
+            }
+            Task task = (Task) obj;
+            return ((Task) obj).getId().equals(task.getId());
         }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return id == null ? 0 : id.hashCode();
     }
 }

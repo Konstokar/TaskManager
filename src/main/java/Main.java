@@ -1,6 +1,9 @@
 import com.taskmanager.Task;
 import com.taskmanager.TaskStatus;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -18,32 +21,13 @@ public class Main {
                 TaskStatus.TODO
         );
 
-        System.out.println(task1 == task2);
+        Set<Task> tasks = new HashSet<>();
+
+        tasks.add(task1);
+
         System.out.println(task1.equals(task2));
-
-        // 1. Тот же объект
-        System.out.println(task1.equals(task1));
-
-// 2. null
-        System.out.println(task1.equals(null));
-
-// 3. Совершенно другой тип
-        System.out.println(task1.equals("Hello"));
-
-        Task task3 = new Task(
-                null,
-                "Task 3",
-                "Description",
-                TaskStatus.TODO
-        );
-
-        Task task4 = new Task(
-                null,
-                "Task 4",
-                "Description",
-                TaskStatus.DONE
-        );
-
-        System.out.println(task3.equals(task4));
+        System.out.println(task1.hashCode());
+        System.out.println(task2.hashCode());
+        System.out.println(tasks.contains(task2));
     }
 }
