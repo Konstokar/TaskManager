@@ -1,8 +1,8 @@
 import com.taskmanager.Task;
 import com.taskmanager.TaskStatus;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
 
@@ -21,13 +21,17 @@ public class Main {
                 TaskStatus.TODO
         );
 
-        Set<Task> tasks = new HashSet<>();
+        Map<Task, String> taskMap = new HashMap<>();
 
-        tasks.add(task1);
+        Task mapTask = new Task(
+                1L,
+                "Learn Java",
+                "Study Java Core",
+                TaskStatus.TODO
+        );
 
-        System.out.println(task1.equals(task2));
-        System.out.println(task1.hashCode());
-        System.out.println(task2.hashCode());
-        System.out.println(tasks.contains(task2));
+        taskMap.put(mapTask, "Моя задача");
+
+        System.out.println(taskMap.get(mapTask));
     }
 }
