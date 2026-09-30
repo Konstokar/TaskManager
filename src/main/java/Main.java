@@ -1,7 +1,10 @@
+import com.taskmanager.Box;
 import com.taskmanager.Task;
 import com.taskmanager.TaskStatus;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Main {
@@ -30,8 +33,14 @@ public class Main {
                 TaskStatus.TODO
         );
 
-        taskMap.put(mapTask, "Моя задача");
+        Box<Task> taskBox = new Box<>(task1);
+        // Box<String> stringBox = new Box<>("Hello"); <- error
+        // Box<Long> idBox = new Box<>(100L); <- error
 
-        System.out.println(taskMap.get(mapTask));
+        Task task = taskBox.getType();
+        // String text = stringBox.getType(); <- error
+        // Long id = idBox.getType(); <- error
+
+        // String wrong = taskBox.getType(); <- error
     }
 }

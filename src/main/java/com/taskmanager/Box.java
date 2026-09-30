@@ -1,14 +1,14 @@
 package com.taskmanager;
 
-public class Box<T> {
+public class Box<T extends Task> {
 
-    private T value;
+    private T type;
 
-    public Box(T value) {
-        this.value = value;
+    public Box(T type) {
+        this.type = type;
     }
 
-    public T getValue() {
-        return value;
+    public T getType() {
+        return type;
     }
 }
