@@ -65,4 +65,9 @@ public class Task {
     public int hashCode() {
         return id == null ? 0 : id.hashCode();
     }
+
+    @Override
+    public String toString() {
+        return String.format("Task{id=%d, title=%s, description=%s, status=%s}", id, title, description, status);
+    }
 }

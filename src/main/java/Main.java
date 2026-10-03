@@ -1,6 +1,4 @@
-import com.taskmanager.Box;
-import com.taskmanager.Task;
-import com.taskmanager.TaskStatus;
+import com.taskmanager.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +7,7 @@ import java.util.Map;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Task task1 = new Task(
                 1L,
                 "Learn Java",
@@ -24,23 +22,26 @@ public class Main {
                 TaskStatus.TODO
         );
 
-        Map<Task, String> taskMap = new HashMap<>();
+        TaskRepository repository = new InMemoryTaskRepository();
 
-        Task mapTask = new Task(
-                1L,
-                "Learn Java",
-                "Study Java Core",
-                TaskStatus.TODO
-        );
+        repository.saveTask(task1);
 
-        Box<Task> taskBox = new Box<>(task1);
-        // Box<String> stringBox = new Box<>("Hello"); <- error
-        // Box<Long> idBox = new Box<>(100L); <- error
+        System.out.println(repository.findTask(1L));
+        System.out.println(repository.findTask(2L));
+        System.out.println(repository.findTask(999L));
 
-        Task task = taskBox.getType();
-        // String text = stringBox.getType(); <- error
-        // Long id = idBox.getType(); <- error
+        System.out.println(repository.getAllTask());
 
-        // String wrong = taskBox.getType(); <- error
+        repository.removeTask(1L);
+
+        System.out.println(repository.getAllTask());
+
+        repository.saveTask(task1);
+
+        task1.setTitle("Learn Java deeply");
+
+        repository.updateTask(task1);
+
+        System.out.println(repository.findTask(1L));
     }
 }
