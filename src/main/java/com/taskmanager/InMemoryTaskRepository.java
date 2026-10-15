@@ -1,10 +1,13 @@
 package com.taskmanager;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class InMemoryTaskRepository implements TaskRepository{
 
-    private Map<Long, Task> taskMap = new HashMap<>();
+    private final Map<Long, Task> taskMap = new HashMap<>();
 
     @Override
     public void saveTask(Task task) {
@@ -43,6 +46,12 @@ public class InMemoryTaskRepository implements TaskRepository{
 
     @Override
     public void updateTask(Task task) {
+        if (task == null) {
+            throw new IllegalArgumentException("Task is null");
+        }
+        if (task.getId() == null) {
+            throw new IllegalArgumentException("Task has null id");
+        }
         if (!taskMap.containsKey(task.getId())) {
             throw new IllegalArgumentException(
                     "Task with id " + task.getId() + " not found"
