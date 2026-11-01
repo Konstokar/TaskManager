@@ -56,7 +56,7 @@ public class Task {
                 return false;
             }
             Task task = (Task) obj;
-            return ((Task) obj).getId().equals(task.getId());
+            return this.getId().equals(task.getId());
         }
         return false;
     }
