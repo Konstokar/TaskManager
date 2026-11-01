@@ -1,20 +1,17 @@
 package com.taskmanager;
 
 import java.util.List;
-import java.util.Map;
 
 public interface TaskRepository {
 
-    // private Map<Long, Task> taskRepository;
+    void saveTask(Task task);
 
-    public void saveTask(Task task);
+    Task findTask(Long id);
 
-    public Task findTask(Long id);
+    List<Task> getAllTask();
 
-    public List<Task> getAllTask();
+    void removeTask(Long id);
 
-    public void removeTask(Long id);
-
-    public void updateTask(Task task);
+    void updateTask(Task task);
 
 }

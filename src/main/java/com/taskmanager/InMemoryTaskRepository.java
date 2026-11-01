@@ -4,7 +4,7 @@ import java.util.*;
 
 public class InMemoryTaskRepository implements TaskRepository{
 
-    private Map<Long, Task> taskMap = new HashMap<>();
+    private final Map<Long, Task> taskMap = new HashMap<>();
 
     @Override
     public void saveTask(Task task) {
